@@ -75,7 +75,6 @@ docker build -t tum_idp_backend:latest --platform linux/amd64 --no-cache .
 
 ## UI Screenshots
 
-```markdown
 ![Sign In Page](figures/Login.png)
 Figure: Sign In Page
 
@@ -126,6 +125,3 @@ Figure: Edit User Dialog in User Management Tab
 
 ![Delete User Dialog in User Management Tab](figures/DeleteUser.png)
 Figure: Delete User Dialog in User Management Tab
-```
-
-
