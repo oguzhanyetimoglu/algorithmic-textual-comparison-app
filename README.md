@@ -1,15 +1,5 @@
-# IDP
+An Application for Algorithmic Textual Comparison*
 
-Finance and Informatics departsments of Technical University of Munich.
-
-*An Application for Algorithmic Textual Comparison*
-
-- **Supervisor:** Prof. Dr. Reiner Braun
-- **Advisor:** Steffen Windmüller
-- **Team Members:** (equal contributions, lexicographically sorted)
-    - Abdurrahman Dilmac
-    - Berkay Kozan
-    - Oguzhan Yetimoglu
 
 ## Running the Project
 
