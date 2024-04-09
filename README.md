@@ -1,6 +1,6 @@
 # An Application for Algorithmic Textual Comparison
 
-**Team Members:** (equal contributions, lexicographically sorted)
+- **Team Members:** (equal contributions, lexicographically sorted)
     - Abdurrahman Dilmac
     - Berkay Kozan
     - Oguzhan Yetimoglu
