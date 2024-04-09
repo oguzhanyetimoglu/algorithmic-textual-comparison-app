@@ -1,4 +1,4 @@
-An Application for Algorithmic Textual Comparison*
+# An Application for Algorithmic Textual Comparison
 
 
 ## Running the Project
