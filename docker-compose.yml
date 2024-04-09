@@ -1,0 +1,55 @@
+version: "3"
+
+services:
+  backend:
+    # image: ghcr.io/cerob/tum_idp_backend:latest
+    image: backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - 127.0.0.1:8000:8000/tcp
+    depends_on:
+      - db
+    env_file:
+      - .env # This is the file that contains secrets
+    environment:
+      - "DEBUG=False"
+      - "DB_HOST=db"
+      - "DB_PORT=5432"
+    command: >
+      sh -c 'python manage.py check && python manage.py showmigrations && python manage.py migrate && (python manage.py createsuperuser --no-input --username $DJANGO_SUPERUSER_USERNAME || true) && gunicorn idp.wsgi:application --bind 0.0.0.0:8000'
+    volumes:
+      - ./backend/src:/app/src
+
+  db:
+    image: postgres:alpine
+    ports:
+      - 5432:5432
+    env_file:
+      - .env # This is the file that contains secrets
+    environment:
+      - "POSTGRES_DB=${DB_NAME}"
+      - "POSTGRES_USER=${DB_USER}"
+      - "POSTGRES_PASSWORD=${PGPASSWORD}"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  frontend:
+    # image: ghcr.io/cerob/tum_idp_frontend:latest
+    image: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - 127.0.0.1:3000:3000/tcp
+    depends_on:
+      - backend
+    environment:
+      - "API_BASE=${API_BASE}"
+    command: ["node", ".output/server/index.mjs"]
+
+volumes:
+  postgres-data:
+    name: idp-postgres-data
+    external: true
